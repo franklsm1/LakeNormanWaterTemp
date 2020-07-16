@@ -52,24 +52,16 @@
     <footer>
         <script async>
             const getTemperature = async () => {
-                const temperatureApi = 'https://my.wirelesstag.net/ethLogShared.asmx/GetLatestTemperatureRawDataByUUID';
-                const temperatureOptions = {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({
-                        uuid: "a55e74cd-1705-4b40-84f8-7cb5e5521048"
-                    })
+                try {
+                    const {tempFahrenheit, tempCelsius, timeDifference} = await fetch('/.netlify/functions/getWaterTemp')
+                        .then(res => res.json());
+
+                    document.getElementById("temperature").innerText = `${tempFahrenheit} °F / ${tempCelsius} °C`;
+                    document.getElementById("time").innerText = timeDifference + ' minutes since last reading';
+                } catch (e) {
+                    document.getElementById('temperature').innerText = 'The sensor is currently offline';
+                    document.getElementById('time').innerText = 'The owner had been notified, please check back shortly';
                 }
-                const response = await fetch(temperatureApi,temperatureOptions)
-                    .then(res => res.json());
-                const tempCelsius = response.d.temp_degC;
-                const time = response.d.time.replace('-04:00', '-00:00');
-                const lastReadDateTime = new Date(time);
-                const currentDate = new Date();
-                const timeDifference = (currentDate - lastReadDateTime) / (1000 * 60);
-                const temperature = tempCelsius * (9/5) + 32;
-                document.getElementById("temperature").innerText = `${temperature.toFixed(1)} °F / ${tempCelsius.toFixed(1)} °C`;
-                document.getElementById("time").innerText = timeDifference.toFixed(0) + " minutes since last reading";
             }
             getTemperature();
         </script>
