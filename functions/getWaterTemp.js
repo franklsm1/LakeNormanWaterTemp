@@ -15,7 +15,7 @@ exports.handler = async (event, context, callback) => {
         const response = await fetch(temperatureApi,temperatureOptions)
             .then(res => res.json());
         const tempCelsius = (response.d.temp_degC).toFixed(1);
-        const time = response.d.time.replace('-04:00', '-00:00');
+        const time = response.d.time.replace('-04:00', '-00:00').replace('-05:00', '-00:00');
         const lastReadDateTime = new Date(time);
         const currentDate = new Date();
         const timeDifference = ((currentDate - lastReadDateTime) / (1000 * 60)).toFixed(0);
