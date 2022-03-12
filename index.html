@@ -4,9 +4,17 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Lake Norman Water Temperature</title>
-        <meta name="description" content="Lake Norman (LKN) Water Temperature current and historical">
+        <meta name="description" content="Lake Norman (LKN) Water Temperature history and current plus alexa skill capability">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='icon' href='favicon.ico' type='image/x-icon'/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Open Sans', sans-serif;
+            }
+        </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172649017-1"></script>
         <script>
@@ -21,27 +29,31 @@
     <body>
         <h2 style="text-align: center;"> Current Lake Norman Water Temperature</h2>
         <h2 id="temperature" style="text-align: center;"></h2>
-        <h4 id="time" style="text-align: center;"></h4>
-        <h6 style="text-align: center;"> * Temperature recorded from a dock in Mooresville, NC</h6>
+        <h4 id="time" style="text-align: center; margin-bottom: 5px;"></h4>
+        <h6 style="text-align: center; margin-top: 5px;"> The temperature is recorded 1 ft. deep off a dock in Mooresville, NC</h6>
+        <div id="email" style="text-align: center;">
+            Send any feedback or questions to
+            <a href="mailto:lkn@franklin.irish?subject=Lake Norman Water Temp"> lkn@franklin.irish </a>
+        </div>
         <hr/>
         <h2 style="text-align: center;">Ask Amazon Alexa or Google Voice for the Temperature</h2>
         <p style="text-align: center;">
             <b>To enable the skill with Alexa say:</b>
-            </br>
+            <br>
             "Alexa enable lake Norman water temperature skill"
-            </br>
+            <br>
             <b>Now get the current temperature by saying:</b>
-            </br>
+            <br>
             "Alexa ask lake Norman the temperature"
-            </br>
-            </br>
+            <br>
+            <br>
             <b>To use the action with google assistant say:</b>
-            </br>
+            <br>
             "Hey Google, talk to Lake Norman water"
-            </br>
-            </br>
+            <br>
+            <br>
             <a href="https://www.amazon.com/franklsm1-Lake-Norman-Water-Temperature/dp/B08CVM9YSZ">More info about the Alexa skill</a>
-            </br>
+            <br>
             <a href="https://assistant.google.com/services/a/uid/00000070de7c3164">More info about the google action</a>
         </p>
         <hr/>
