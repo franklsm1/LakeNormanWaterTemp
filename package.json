@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/franklsm1/LakeNormanWaterTemp#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
     "jest-fetch-mock": "^3.0.3"

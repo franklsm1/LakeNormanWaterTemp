@@ -1,5 +1,5 @@
-const fetch = require('node-fetch');
-const getWaterTemp = require('../functions/getWaterTemp').handler;
+import fetch from 'node-fetch';
+import getWaterTemp from '../functions/getWaterTemp';
 
 const mockTempResponse = {
     "d": {
@@ -15,7 +15,7 @@ describe('Get Water Temp Response', () => {
     it('successfully gets temp in Celsius and Fahrenheit and time', async () => {
         fetch.mockResponse(JSON.stringify(mockTempResponse));
         const callback = jest.fn();
-        const tempResponse = await getWaterTemp(null, null, callback);
+        const tempResponse = await getWaterTemp.handler(null, null, callback);
         console.log(tempResponse);
         expect(callback).toHaveBeenCalledTimes(1);
         expect(callback).toHaveBeenCalledWith( null,
