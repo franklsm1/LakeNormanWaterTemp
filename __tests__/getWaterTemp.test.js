@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
 import getWaterTemp from '../functions/getWaterTemp';
+import * as axios from "axios";
 
 const mockTempResponse = {
     "d": {
@@ -11,9 +11,13 @@ const mockTempResponse = {
         "battery_volts": 3.63696551322937
     }
 };
+
+jest.mock('axios', () => ({
+    post: () => Promise.resolve({ data: mockTempResponse }),
+}));
+
 describe('Get Water Temp Response', () => {
     it('successfully gets temp in Celsius and Fahrenheit and time', async () => {
-        fetch.mockResponse(JSON.stringify(mockTempResponse));
         const callback = jest.fn();
         const tempResponse = await getWaterTemp.handler(null, null, callback);
         console.log(tempResponse);

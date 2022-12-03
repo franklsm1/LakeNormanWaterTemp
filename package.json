@@ -18,14 +18,13 @@
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
     "husky": "^4.2.5",
-    "jest": "^26.1.0",
-    "jest-fetch-mock": "^3.0.3"
+    "jest": "^26.1.0"
   },
   "jest": {
     "automock": false,
-    "setupFiles": [
-      "./setupJest.js"
-    ]
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   },
   "husky": {
     "hooks": {
@@ -33,7 +32,7 @@
     }
   },
   "dependencies": {
-    "node-fetch": "^3.3.0"
+    "axios": "^1.2.0"
   },
   "engines": {
     "node": "^16.14.0",
