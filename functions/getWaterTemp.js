@@ -4,8 +4,9 @@ let fallbackResponse;
 exports.handler = async (event, context, callback) => {
     let tempResponse;
     const temperatureApi = 'https://my.wirelesstag.net/ethLogShared.asmx/GetLatestTemperatureRawDataByUUID';
+    const wirelessTagUuidInjectedFromNetlify = process.env.WIRELESS_TAG_UUID;
     const temperatureRequestBody = {
-            uuid: "a55e74cd-1705-4b40-84f8-7cb5e5521048"
+            uuid: wirelessTagUuidInjectedFromNetlify
     }
     try {
         const response = await axios.post(temperatureApi,temperatureRequestBody)
