@@ -1,6 +1,6 @@
 # Lake Norman Water Temperature Website
 
-Hosted at: https://lkn.franklin.irish
+Hosted at: https://lknWater.info
 
 ### Testing
 1. Install jest : `npm i`
