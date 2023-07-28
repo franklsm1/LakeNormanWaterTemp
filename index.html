@@ -64,7 +64,7 @@
         <script async>
             const getTemperature = async () => {
                 try {
-                    const {tempFahrenheit, tempCelsius, timeDifference} = await fetch('/.netlify/functions/getWaterTemp')
+                    const {tempFahrenheit, tempCelsius, timeDifference} = await fetch('/.netlify/functions/getWaterTemperature')
                         .then(res => res.json());
 
                     document.getElementById("temperature").innerText = `${tempFahrenheit} °F / ${tempCelsius} °C`;

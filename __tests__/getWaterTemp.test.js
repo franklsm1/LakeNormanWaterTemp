@@ -1,4 +1,4 @@
-import getWaterTemp from '../functions/getWaterTemp';
+import getWaterTemp from '../functions/getWaterTemperature';
 import * as axios from "axios";
 
 const mockTempResponse = {
