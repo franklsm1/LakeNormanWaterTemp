@@ -64,6 +64,8 @@
         <script async>
             const getTemperature = async () => {
                 try {
+                    // If you are taking this URL and calling it directly from another app please send me an email at lkn.franklin.irish and I can give you the direct URL instead of this function
+                    // Someone appears to be calling this URL thousands of times a day and it is pushing me close to my quota of monthly calls
                     const {tempFahrenheit, tempCelsius, timeDifference} = await fetch('/.netlify/functions/getWaterTemperature')
                         .then(res => res.json());
 
