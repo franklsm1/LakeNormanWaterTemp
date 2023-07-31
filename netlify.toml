@@ -2,9 +2,12 @@
 # unless otherwise overridden by more specific contexts.
 [build]
   # Default build command.
-  command = "#"
+  command = "npm run build"
 
   # Directory with the serverless Lambda functions to deploy to AWS.
   functions = "functions/"
 [functions]
   node_bundler = "esbuild"
+
+[dev]
+  command = "npm run build-dev"
