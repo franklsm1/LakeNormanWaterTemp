@@ -9,6 +9,6 @@ keepShellRunningWhileNetlifyDevServerIsUp(){
 }
 
 # Whether it was an error or successful keep running
-trap keepShellRunningWhileNetlifyDevServerIsUp ERR EXIT
+trap keepShellRunningWhileNetlifyDevServerIsUp ERR SIGINT SIGTERM EXIT
 
 source ./build.sh

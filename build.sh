@@ -3,7 +3,7 @@ echo "Getting water temperature from curl calling sensor API"
 
 # Auto fail on error to and run the trap command to use the old HTML file
 set -e
-trap 'echo "Error during build, using old HTML file" && cp index_old.html index.html' ERR
+trap 'echo "Error during build, using old HTML file" && cp index_old.html index.html' ERR SIGINT SIGTERM
 
 # Make API call to wireless sensor API to get the current temperature
 DOUBLE_QUOTE='"'
