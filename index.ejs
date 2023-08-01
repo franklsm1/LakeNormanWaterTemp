@@ -1,0 +1,84 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Lake Norman Water Temperature</title>
+        <meta name="description" content="Lake Norman (LKN) Water Temperature history and current plus alexa skill capability">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='icon' href='favicon.ico' type='image/x-icon'/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Open Sans', sans-serif;
+            }
+        </style>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D6SZ2C58XV"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-D6SZ2C58XV');
+        </script>
+    </head>
+    <body>
+        <h2 style="text-align: center;"> Current Lake Norman Water Temperature</h2>
+        <h2 id="temperature" style="text-align: center;"></h2>
+        <h4 id="time" style="text-align: center; margin-bottom: 5px;"></h4>
+        <h6 style="text-align: center; margin-top: 5px; font-weight: normal"> The temperature is recorded 1 ft. deep off a dock in Mooresville, NC</h6>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="lknwater" data-color="#FFDD00" data-emoji="🍺"  data-font="Lato" data-text="Buy me a beer" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+        </div>
+        </br>
+        <div id="email" style="text-align: center;">
+            Send any feedback or questions to
+            <a href="mailto:lkn@franklin.irish?subject=Lake Norman Water Temp"> lkn@franklin.irish </a>
+        </div>
+        <hr/>
+        <h2 style="text-align: center;">Ask Amazon Alexa or Google Voice for the Temperature</h2>
+        <p style="text-align: center;">
+            <b>To enable the skill with Alexa say:</b>
+            <br>
+            "Alexa enable lake Norman water temperature skill"
+            <br>
+            <b>Now get the current temperature by saying:</b>
+            <br>
+            "Alexa ask lake Norman the temperature"
+            <br>
+            <br>
+            <b>To use the action with google assistant say:</b>
+            <br>
+            "Hey Google, talk to Lake Norman water"
+            <br>
+            <br>
+            <a href="https://www.amazon.com/franklsm1-Lake-Norman-Water-Temperature/dp/B08CVM9YSZ">More info about the Alexa skill</a>
+            <br>
+            <a href="https://assistant.google.com/services/a/uid/00000070de7c3164">More info about the google action</a>
+        </p>
+        <hr/>
+        <h2 style="text-align: center;margin-bottom: .25rem;"> Historical Lake Norman Water Temperature</h2>
+        <h6 style="text-align: center;margin-top: 0;">Note: this is an embedded graph from the sensor company</h6>
+        <iframe style="border:none; width:100%; height:80vh;" src="https://my.wirelesstag.net/eth/tempStats.html?a55e74cd-1705-4b40-84f8-7cb5e5521048&BoatDock&F"> </iframe>
+    </body>
+    <footer>
+        <script>
+            try {
+                // If you are trying to get the temp from an API for another app please email me at lkn@franklin.irish, and I can share with you the URL
+                // Someone appears to be calling this URL thousands of times a day, and it is pushing me close to my quota of monthly calls
+                const currentDate = new Date();
+                const lastReadDateTime = new Date(<%- JSON.stringify(lastReadDateTime) %>);
+                const timeDifference = ((currentDate - lastReadDateTime) / (1000 * 60)).toFixed(0);
+
+                document.getElementById("temperature").innerText = `<%- tempFahrenheit %> °F / <%- tempCelsius %> °C`;
+                document.getElementById("time").innerText = timeDifference + ' minutes since last reading';
+            } catch (e) {
+                document.getElementById('temperature').innerText = 'The sensor is currently offline';
+                document.getElementById('time').innerText = 'The owner had been notified, please check back shortly';
+            }
+        </script>
+    </footer>
+</html>
