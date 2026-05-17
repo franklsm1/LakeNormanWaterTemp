@@ -12,18 +12,26 @@ exports.handler = async (event, context, callback) => {
         const response = await axios.post(temperatureApi,temperatureRequestBody)
             .then(res => res.data);
         const tempCelsius = (response.d.temp_degC).toFixed(1);
-        const time = response.d.time.replace('-04:00', '-00:00').replace('-05:00', '-00:00');
-        const lastReadDateTime = new Date(time);
-        const currentDate = new Date();
-        const timeDifference = ((currentDate - lastReadDateTime) / (1000 * 60)).toFixed(0);
-        const tempFahrenheit = (tempCelsius * (9/5) + 32).toFixed(1);
-        tempResponse = {
-            tempFahrenheit,
-            tempCelsius,
-            timeDifference
-        };
-        console.log('temp response:', tempResponse);
-        fallbackResponse = tempResponse;
+        if (tempCelsius > 1 && tempCelsius < 38 ) {
+            const time = response.d.time.replace('-04:00', '-00:00').replace('-05:00', '-00:00');
+            const lastReadDateTime = new Date(time);
+            const currentDate = new Date();
+            const timeDifference = ((currentDate - lastReadDateTime) / (1000 * 60)).toFixed(0);
+            const tempFahrenheit = (tempCelsius * (9/5) + 32).toFixed(1);
+            tempResponse = {
+                tempFahrenheit,
+                tempCelsius,
+                timeDifference
+            };
+            console.log('temp response:', tempResponse);
+            fallbackResponse = tempResponse;
+        } else if (fallbackResponse) {
+            console.log('out of range using fallback temp response:', fallbackResponse);
+            tempResponse = fallbackResponse;
+        } else {
+            callback(null, { statusCode: 500 });
+            return;
+        }
     }  catch (err) {
         console.log('err:', err);
         if (fallbackResponse) {
