@@ -30,6 +30,10 @@
         <h2 id="temperature" style="text-align: center;"></h2>
         <h4 id="time" style="text-align: center; margin-bottom: 5px;"></h4>
         <h6 style="text-align: center; margin-top: 5px; font-weight: normal"> The temperature is recorded 1 ft. deep off a dock in Mooresville, NC</h6>
+
+        <h2 style="text-align: center;"> Current Lake Norman Water Level</h2>
+        <h3 id="lakeLevel" style="text-align: center; margin-bottom: 5px;"></h4>
+
         <div style="display: flex; align-items: center; justify-content: center;">
             <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="lknwater" data-color="#FFDD00" data-emoji="🍺"  data-font="Lato" data-text="Buy the creator a beer" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
         </div>
@@ -61,11 +65,13 @@
                 try {
                     // If you are taking this URL and calling it directly from another app please send me an email at lkn.franklin.irish and I can give you the direct URL instead of this function
                     // Someone appears to be calling this URL thousands of times a day and it is pushing me close to my quota of monthly calls
-                    const {tempFahrenheit, tempCelsius, timeDifference} = await fetch('/.netlify/functions/getWaterTemperature')
+                    const {tempFahrenheit, tempCelsius, timeDifference, lakeLevel} = await fetch('/.netlify/functions/getWaterTemperature')
                         .then(res => res.json());
 
                     document.getElementById("temperature").innerText = `${tempFahrenheit} °F / ${tempCelsius} °C`;
                     document.getElementById("time").innerText = timeDifference + ' minutes since last reading';
+                    document.getElementById("lakeLevel").innerText = lakeLevel ? `${lakeLevel} ft or ${100 - lakeLevel} ft from max` : 'water level currently unavailable';
+
                 } catch (e) {
                     document.getElementById('temperature').innerText = 'The sensor is currently offline';
                     document.getElementById('time').innerText = 'The owner had been notified, please check back shortly';
