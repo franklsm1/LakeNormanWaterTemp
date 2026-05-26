@@ -74,7 +74,7 @@
 
                     document.getElementById("temperature").innerText = `${tempFahrenheit} °F / ${tempCelsius} °C`;
                     document.getElementById("time").innerText = timeDifference + ' minutes since last reading';
-                    document.getElementById("lakeLevel").innerText = lakeLevel ? `${lakeLevel} ft meaning ${Number((100 - lakeLevel).toFixed(2))} ft from max level` : 'water level currently unavailable';
+                    document.getElementById("lakeLevel").innerText = lakeLevel ? `${lakeLevel} ft meaning ${Number((100 - lakeLevel).toFixed(2))} ft below max level` : 'water level currently unavailable';
 
                 } catch (e) {
                     document.getElementById('temperature').innerText = 'The sensor is currently offline';
